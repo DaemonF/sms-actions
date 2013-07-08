@@ -1,8 +1,8 @@
 import os
 import json
-import sms-util
+import smsUtils
 
-data_folder = "groups-data" + os.sep
+data_folder = os.path.join(os.path.dirname(__file__), "groups-data" + os.sep)
 
 def handleText(sender_num, sender_msg):
 	msg = sender_msg.split(" ")
@@ -90,7 +90,7 @@ def read(group_num):
 def update(group_num, phone_num, first_name, last_name):
 	filename = group_exists(group_num)
 	if filename:
-		fixed_phone_num = sms-util.fix_phone_num(phone_num)
+		fixed_phone_num = smsUtils.fix_phone_num(phone_num)
 		if fixed_phone_num:
 			obj = [fixed_phone_num, first_name, last_name]
 			json_obj = json.dumps(obj)
