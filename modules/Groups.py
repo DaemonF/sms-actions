@@ -74,7 +74,7 @@ def create(sender_num, group_num):
 		new_file.close()
 		return {sender_num : "Group created."}
 
-def read(group_num):
+def read(sender_num, group_num):
 	filename = group_exists(group_num)
 	if filename:
 		group_file = open(filename, "r")
@@ -87,7 +87,7 @@ def read(group_num):
 	else:
 		return {sender_num : "Group does not exist."}
 
-def update(group_num, phone_num, first_name, last_name):
+def update(sender_num, group_num, phone_num, first_name, last_name):
 	filename = group_exists(group_num)
 	if filename:
 		fixed_phone_num = smsUtils.fix_phone_num(phone_num)
