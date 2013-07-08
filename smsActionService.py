@@ -30,7 +30,7 @@ def main():
 
 			print "Replies: %s\n\n"%replies ###
 			for phoneNum in replies:
-				voice.send_sms(phoneNum, replies[phoneNumber])	
+				voice.send_sms(phoneNum, replies[phoneNum])	
 
 			message.delete()
 		time.sleep(1)

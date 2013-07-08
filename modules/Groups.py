@@ -11,12 +11,12 @@ def handleText(sender_num, sender_msg):
 	elif msg[1] == "read":
 		return read(sender_num, msg[2])
 	elif msg[1] == "update":
-		return update(sender_num, msg[2], msg[3], msg[4])
+		return update(sender_num, msg[2], msg[3], msg[4], msg[5])
 	elif msg[1] == "delete":
 		return delete(sender_num, msg[2], msg[3])
 	else:
 		grp = msg[1]
-		msg = msg[2]
+		msg = " ".join(msg[2:])
 		return send_msg(sender_num, grp, msg)
 
 
