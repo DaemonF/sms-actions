@@ -7,7 +7,7 @@ data_folder = os.path.join(os.path.dirname(__file__), "groups-data" + os.sep)
 def handleText(sender_num, sender_msg):
 	msg = sender_msg.split(" ")
 	if msg[1] == "create":
-		return create(sender_num, msg[2])
+		return create(sender_num, msg[2], msg[3], msg[4])
 	elif msg[1] == "read":
 		return read(sender_num, msg[2])
 	elif msg[1] == "update":
@@ -33,29 +33,7 @@ def send_msg(sender_num, group_num, msg):
 		return my_dict
 	else:
 		return {sender_num : "Group does not exist."}
-		
 
-"""	while True:
-		command = raw_input("Do what? ")
-		if command == "q":
-			break
-		elif command == "create":
-			g_n = raw_input("group_num ")
-			create(g_n)
-		elif command == "read":
-			g_n = raw_input("group_num ")
-			read(g_n)
-		elif command == "update":
-			g_n = raw_input("group_num ")
-			p_n = raw_input("phone_num ")
-			f_n = raw_input("first_name ")
-			l_n = raw_input("last_name ")
-			update(g_n, p_n, f_n, l_n)
-		elif command == "delete":
-			g_n = raw_input("group_num ")
-			index = raw_input("index ")
-			delete(g_n, index)
-"""
 
 def group_exists(group_num):
 	filename = data_folder + "group_" + group_num + ".txt"
@@ -72,6 +50,7 @@ def create(sender_num, group_num):
 		filename = data_folder + "group_" + group_num + ".txt"
 		new_file = open(filename, "w")
 		new_file.close()
+		update(sender_num, group_num, sender_num, first_name, last_name)
 		return {sender_num : "Group created."}
 
 def read(sender_num, group_num):
